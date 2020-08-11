@@ -43,9 +43,9 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/cases', casesRouter);
-app.use('/auth', authRouter);
-app.use('/user', userRouter);
+// app.use('/cases', casesRouter);
+// app.use('/auth', authRouter);
+// app.use('/user', userRouter);
 
 
 app.use('*', (req, res) => {
