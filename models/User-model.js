@@ -20,8 +20,8 @@ class User {
     return db
       .one(
         `INSERT INTO users
-        (username, email, password_digest)
-        VALUES ($/username/, $/email/, $/password_digest/)
+        (username, epassword_digest)
+        VALUES ($/username/, $/password_digest/)
         RETURNING *`,
         this
       )
