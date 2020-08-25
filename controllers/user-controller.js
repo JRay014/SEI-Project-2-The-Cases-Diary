@@ -23,6 +23,12 @@ const usersController = {
     })
     .catch(next);
   },
+
+  validatePassword() {
+    if (password.value == confirmPassword.value) {
+      
+    }
+  }
 };
 
 module.exports = usersController;
