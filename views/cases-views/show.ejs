@@ -1,0 +1,22 @@
+<%- include('../partials/boilerplate') %>
+
+<h1><%= case.title %></h1>
+<h2><%= case.date %></h2>
+
+<div>
+    <h2>Tags</h2>
+    <p><%= case.keywords %></p>
+</div>
+
+<div>
+    <h2>Description</h2>
+    <p><%= case.description %></p>
+</div>
+
+<div>
+    <h2>Decision</h2>
+    <p><%= case.decision %></p>
+</div>
+
+
+<%- include('../partials/end') %>

@@ -11,4 +11,8 @@ userRouter.get('/new', authHelpers.loginRedirect, (req, res) => {
 
 userRouter.post('/', usersController.create);
 
+userRouter.get('/logout', (req, res) => {
+  res.render('/index');
+});
+
 module.exports = userRouter;

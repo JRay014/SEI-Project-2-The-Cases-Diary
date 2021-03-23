@@ -21,8 +21,8 @@ authRouter.get('/logout', (req, res) => {
   res.redirect('back');
 });
 
-authRouter.get('/signup', authHelpers.loginRedirect, (req, res, next) => {
-  res.render('auth-views/signup.ejs')
+authRouter.get('/register', authHelpers.loginRedirect, (req, res) => {
+  res.render('auth-views/register')
 });
 
 module.exports = authRouter;
