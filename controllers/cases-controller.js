@@ -5,7 +5,7 @@ const casesController = {};
 casesController.index = (req, res, next) => {
     Case.getAll()
         .then((cases) => {
-            res.render('user/index', {
+            res.render('cases/cases', {
 
             });
         })

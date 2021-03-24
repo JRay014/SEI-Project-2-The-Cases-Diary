@@ -5,9 +5,9 @@
 <h2>Cases</h2>
 
 <div>
-    <li><a href="/cases/:id/1"></a></li>
-    <li><a href="/cases/:id/2"></a></li>
-    <li><a href="/cases/:id/3"></a></li>
+    <% for (let case of data.cases) { %>
+        <li><a href="/cases/<%case.id%>">case.title</a></li>
+    <%}%>
 </div>
 <a href='/logout'>Log Out</a>
 

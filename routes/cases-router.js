@@ -9,6 +9,8 @@ caseRouter.get('/new', (req, res) => {
     res.render('cases/new');
 });
 
+caseRouter.get('/cases', casesController.index)
+
 caseRouter.get('/:id([0-9]+)', casesController.show, (req, res) => {
     res.render('cases/show', {
         certainCase: res.locals.certainCase,

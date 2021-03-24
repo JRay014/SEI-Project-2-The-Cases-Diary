@@ -26,4 +26,3 @@ authRouter.get('/register', authHelpers.loginRedirect, (req, res) => {
 });
 
 module.exports = authRouter;
-
