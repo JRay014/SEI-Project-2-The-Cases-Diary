@@ -6,10 +6,11 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const moment = require('moment');
+const mongoose = require('mongoose');
 
-const casesRouter = require('./routes/cases-router');
-const authRouter = require('./routes/auth-router');
-const userRouter = require('./routes/user-router');
+// const casesRouter = require('./routes/cases-router');
+// const authRouter = require('./routes/auth-router');
+// const userRouter = require('./routes/user-router');
 
 const app = express();
 require('dotenv').config();
@@ -26,6 +27,22 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+const mongoURI = process.env.MONGODBURI;
+
+const db = mongoose.connection;
+
+mongoose.connect(mongoURI, {
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, ()=>{
+    console.log("database connection checked");
+});
+
+db.on('error', (err)=> { console.log('ERROR: ', err)});
+db.on('connected', ()=> { console.log("mongo connected")});
+db.on('disconnected', ()=> { console.log("mongo disconnected")});
 
 
 app.set('views', 'views');
@@ -45,9 +62,9 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/cases', casesRouter);
-app.use('/auth', authRouter);
-app.use('/user', userRouter);
+// app.use('/cases', casesRouter);
+// app.use('/auth', authRouter);
+// app.use('/user', userRouter);
 
 
 app.use('*', (req, res) => {

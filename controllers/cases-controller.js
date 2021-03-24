@@ -1,61 +1,65 @@
+const express = require('express');
+const router = express.Router();
 const Case = require('../models/Cases-model');
 
-const casesController = {};
+router.get("/", (req, res, next) => {
+    Case.find({}, (err, foundCases, next) => {
+        if (err) { 
+            console.log(err)
+            next(err)
+        } else {
+            res.render('home.ejs', { cases: foundCases })
+        }
+    });
+});
 
-casesController.index = (req, res, next) => {
-    Case.getAll()
-        .then((cases) => {
-            res.render('cases/cases', {
+router.get('/new', (req, res) => {
+    res.render('new.ejs');
+});
 
-            });
-        })
-        .catch(next);
-};
+router.get('/:id', (req, res) => {
+    Case.findById(req.params.id, (err, foundCase) => {
+        res.render('show.ejs', { case: foundCase })
+    });
+});
 
-casesController.show = (req, res, next) => {
-    Case.getById(req.params.id)
-        .then((cases) => {
-            res.local.cases = cases;
-            next();
-        })
-        .catch(next);
-};
-
-casesController.create = (req, res, next) => {
-    new Case ({
-        title: req.body.title,
-        date: req.body.date,
-        keywords: req.body.keywords,
-        description: req.body.description,
-        decision: req.body.decision,
+router.post("/", (req, res, next) => {
+    Case.create(req.body, (error, createdCase) => {
+        if (error) {
+            console.log(error);
+            res.send(error);
+        }
+        else {
+            console.log(createdCase)
+            res.redirect('/:id/show')
+        }
     })
-    .save()
-    .then(() => {
-        res.redirect('/cases')
+});
+
+router.get('/:id/edit', (req, res) => {
+    Fruit.findById(req.params.id, (err, foundCase) => {
+        res.render('edit.ejs', {
+            case: foundCase
+        })
+
     })
-    .catch(next);
-};
+});
 
-casesController.update = (req, res, next) => {
-    Case.getById(req.params.id)
-        .then((cases) => {
-            return cases.update(req.body);
-        })
-        .then((updatedCase) => {
-            res.redirect(`/cases/${updatedCase.id}`);
-        })
-        .catch(next);
-};
+router.put("/:id", (req, res, next) => {
+    Case.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedFruit) => {
+        res.redirect('/:id/show')
+    })
+});
 
-casesController.delete = (req, res, next) => {
-    Case.getById(req.params.id)
-        .then((cases) => {
-            return cases.delete();
-        })
-        .then(() => {
-            res.redirect('/cases');
-        })
-        .catch(next);
-};
+router.delete("/:id", (req, res, next) => {
+    Case.findByIdAndRemove(req.params.id, (err, data) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(data)
+            res.redirect('/home')
+        }
+    })
+});
 
 module.exports = casesController;
