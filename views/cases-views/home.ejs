@@ -6,10 +6,10 @@
 <h2>Cases</h2>
 
 <div>
-    <% for (let case of data.cases) { %>
-        <li><a href="/cases/<%case.id%>">case.title</a></li>
-    <%}%>
+    <% cases.forEach((post) => { %>
+        <li><a href="/home/<%=certainCase.id%>"><%=certainCase.title%></a></li>
+    <%})%>
 </div>
-<a href='/logout'>Log Out</a>
+<a href='/new'>New Case</a>
 
 <%- include('../partials/end') %>

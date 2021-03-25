@@ -1,0 +1,16 @@
+<%- include('../partials/boilerplate') %>
+<%- include('../partials/nav') %>
+
+<h1>Add a New Case</h1>
+
+<form method="POST" action="/">
+    <input name='title' type="text" placeholder="Title">
+    <input name='date' type="date" placeholder="Date">
+    <input name='keywords' type="text" placeholder="Keywords">
+    <input name='description' type="text" placeholder="Description">
+    <input name='decision' type="text" placeholder="Decision">
+
+    <input type="submit" value="Create Case">
+</form>
+
+<%- include('../partials/end') %>

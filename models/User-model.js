@@ -1,32 +1,18 @@
-const db = require('../db/config');
+// const db = require('../db/config');
 
-class User {
-  constructor(newUser) {
-    this.id = newUser.id || null;
-    this.username = newUser.username;
-    this.password_digest = newUser.password_digest;
-  }
+const mongoose = require('mongoose');
+const {Schema, model} = mongoose;
 
-  static findByUserName(username) {
-    return db
-      .oneOrNone('SELECT * FROM users WHERE username = $1', username)
-      .then((user) => {
-        if (user) return new this(user);
-        else throw new Error('User not found');
-      });
-  }
 
-  save() {
-    return db
-      .one(
-        `INSERT INTO users
-        (username, epassword_digest)
-        VALUES ($/username/, $/password_digest/)
-        RETURNING *`,
-        this
-      )
-      .then((savedUser) => Object.assign(this, savedUser));
-  }
-}
+const usersSchema = new Schema({
+    // this.id = newUser.id || null;
+    // this.username = newUser.username;
+    // this.password_digest = newUser.password_digest;
+  username: {type: String, required: true},
+  password: {type: String, required: true},
+});
+  
+
+const User = model('User', usersSchema);
 
 module.exports = User;

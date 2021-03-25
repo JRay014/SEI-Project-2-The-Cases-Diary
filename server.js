@@ -2,12 +2,13 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const passport = require('passport');
+// const cookieParser = require('cookie-parser');
+// const session = require('express-session');
+// const passport = require('passport');
 const moment = require('moment');
 const mongoose = require('mongoose');
 
+const casesController = require('./controllers/cases-controller');
 // const casesRouter = require('./routes/cases-router');
 // const authRouter = require('./routes/auth-router');
 // const userRouter = require('./routes/user-router');
@@ -19,14 +20,14 @@ app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(session({
-  secret: process.env.SECRET_KEY,
-  resave: true,
-  saveUninitialized: true,
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(cookieParser());
+// app.use(session({
+//   secret: process.env.SECRET_KEY,
+//   resave: true,
+//   saveUninitialized: true,
+// }));
+// // app.use(passport.initialize());
+// app.use(passport.session());
 
 const mongoURI = process.env.MONGODBURI;
 
@@ -56,11 +57,7 @@ app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
 
-app.get('/', (req, res) => {
-  res.render('index', {
-    appName: 'cases',
-  });
-});
+app.use("/", casesController);
 
 // app.use('/cases', casesRouter);
 // app.use('/auth', authRouter);
