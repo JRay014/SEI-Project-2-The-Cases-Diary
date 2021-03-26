@@ -68,7 +68,7 @@ casesController.delete("/:id", (req, res, next) => {
             console.log(err)
         } else {
             console.log(data)
-            res.redirect('/home')
+            res.redirect('/')
         }
     })
 });
