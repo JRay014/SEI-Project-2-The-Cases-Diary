@@ -9,7 +9,7 @@ casesController.get("/", (req, res, next) => {
             next(err)
         } else {
             res.render('cases-views/home.ejs', 
-            { cases: foundCases, certainCase: Case,})
+            { cases: foundCases })
         }
     });
 });
@@ -20,7 +20,11 @@ casesController.get('/new', (req, res) => {
 
 casesController.get('/:id', (req, res) => {
     Case.findById(req.params.id, (err, foundCase) => {
+        if (err) {
+            console.log(err)
+        } else {
         res.render('cases-views/show.ejs', { certainCase: foundCase })
+        }
     });
 });
 
@@ -32,7 +36,7 @@ casesController.post("/", (req, res, next) => {
         }
         else {
             console.log(createdCase)
-            res.redirect('/:id/show')
+            res.redirect(`/${createdCase.id}`)
         }
     })
 });
@@ -48,7 +52,7 @@ casesController.get('/:id/edit', (req, res) => {
 
 casesController.put("/:id", (req, res, next) => {
     Case.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedFruit) => {
-        res.redirect('/:id/show')
+        res.redirect('/:id')
     })
 });
 

@@ -6,8 +6,8 @@
 <h2>Cases</h2>
 
 <div>
-    <% cases.forEach((post) => { %>
-        <li><a href="/home/<%=certainCase.id%>"><%=certainCase.title%></a></li>
+    <% cases.forEach((certainCase) => { %>
+        <li><a href="/<%=certainCase.id%>"><%=certainCase.title%></a></li>
     <%})%>
 </div>
 <a href='/new'>New Case</a>

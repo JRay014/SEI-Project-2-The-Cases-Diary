@@ -1,0 +1,14 @@
+<%- include('../partials/boilerplate') %>
+<%- include('../partials/nav') %>
+
+<h1>Edit fruit <%= certainCase.name %> </h1>
+<form method="POST" action="/<%= certainCase.id %>?_method=PUT">
+  <label for="name">Name:</label>
+  <input type="text" name="name" value="<%=certainCase.name%>"/>
+  <label for="color">Color:</label>
+  <input type="text" name="color" value="<%=certainCase.color%>"/>
+
+  <input type="submit" name="" value="Submit Changes"/>
+</form>
+
+  <%- include('../partials/end') %>
