@@ -50,7 +50,7 @@ app.set('views', 'views');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-moment().format('L');
+// moment().format('L');
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

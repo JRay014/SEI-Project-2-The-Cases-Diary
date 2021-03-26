@@ -42,17 +42,23 @@ casesController.post("/", (req, res, next) => {
 });
 
 casesController.get('/:id/edit', (req, res) => {
-    Fruit.findById(req.params.id, (err, foundCase) => {
-        res.render('edit.ejs', {
-            certainCase: foundCase
+    Case.findById(req.params.id, (err, foundCase) => {
+        res.render('cases-views/edit.ejs', {
+            certainCase: foundCase,
         })
-
     })
 });
 
 casesController.put("/:id", (req, res, next) => {
-    Case.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedFruit) => {
-        res.redirect('/:id')
+    console.log(req.body);
+    console.log(req.params.id);
+    Case.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedCase) => {
+        if (err) {
+            console.log(err);
+            next(err);
+        } else{
+            res.redirect(`/${updatedCase.id}`)
+        }
     })
 });
 
