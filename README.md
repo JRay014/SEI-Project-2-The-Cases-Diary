@@ -23,15 +23,15 @@ A user will be able to create an account and then access it through the app. The
 
 ### Technology Used
 
--Express: Application framework.
--Mongoose: Database for application.
--EJS: Framework for embedding Javascript in HTML.
--dotenv: NPM package for enviornment framework.
--bcrypt: User encryption package.
--Morgan: Logger for application.
--Body Parser: NPM body parser package.
--Method Override: NPM package for HTTP verbs.
--Moment: NPM Package for dates framework.
+-Express: Application framework.  
+-Mongoose: Database for application.  
+-EJS: Framework for embedding Javascript in HTML.  
+-dotenv: NPM package for enviornment framework.  
+-bcrypt: User encryption package.  
+-Morgan: Logger for application.  
+-Body Parser: NPM body parser package.  
+-Method Override: NPM package for HTTP verbs.  
+-Moment: NPM Package for dates framework.  
 #### Futrure Inclusions
 -Express Sessions
 -Cookie Parser
