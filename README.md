@@ -16,3 +16,27 @@ This Project is a professional journal for lawyers. It allows them to create ent
 ![Wireframe 2](readme-assets/Cases%20Wireframes/WF2-1.jpg)
 ![Wireframe 3](readme-assets/Cases%20Wireframes/WF3.jpg)
 ![Wireframe 4](readme-assets/Cases%20Wireframes/WF4.jpg)
+
+### User Stories
+
+A user will be able to create an account and then access it through the app. The User will be able to add, edit, and delete entries as desired. Users will be able to search through their list of cases through the search function or organize there lsit of entries by any of the given catagories (Title, Date, Keywords, Decription, and Decision).
+
+### Technology Used
+
+-Express: Application framework.
+-Mongoose: Database for application.
+-EJS: Framework for embedding Javascript in HTML.
+-dotenv: NPM package for enviornment framework.
+-bcrypt: User encryption package.
+-Morgan: Logger for application.
+-Body Parser: NPM body parser package.
+-Method Override: NPM package for HTTP verbs.
+-Moment: NPM Package for dates framework.
+#### Futrure Inclusions
+-Express Sessions
+-Cookie Parser
+-Passport
+-PG Promise
+-Search
+
+### Unsolved Problems and Notes
