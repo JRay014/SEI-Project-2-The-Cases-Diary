@@ -1,3 +1,13 @@
 body {
-    background-color: antiquewhite;
+    background-color: darkgray;
+    color: antiquewhite;
 }
+
+a {
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+a:hover {
+    border-bottom: 1px solid;
+    background: #367403;
+  }
