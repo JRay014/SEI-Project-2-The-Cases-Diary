@@ -33,10 +33,16 @@ A user will be able to create an account and then access it through the app. The
 -Method Override: NPM package for HTTP verbs.  
 -Moment: NPM Package for dates framework.  
 #### Futrure Inclusions
--Express Sessions
--Cookie Parser
--Passport
--PG Promise
--Search
+-Express Sessions  
+-Cookie Parser  
+-Passport  
+-PG Promise  
+-Search  
 
 ### Unsolved Problems and Notes
+
+- The seach function is not working yet.
+- Users still need to be added in to the app function.
+- The app still needs to be styled.
+- The date framework needs to be fine tuned.
+- I'd like to finish the alternative version of this app that uses an SQL database.
